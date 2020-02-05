@@ -39,15 +39,14 @@ const books = [
   ];
 
 
-const resolvers = {
-    Query: {
-      books: () => books,
-    },
-  };
+const resolvers = require('./resolve/resolvers').resolvers;
 
 
  
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ 
+  typeDefs, 
+  resolvers 
+});
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}/${server.graphqlPath}`);
